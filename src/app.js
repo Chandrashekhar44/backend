@@ -23,7 +23,21 @@ import dashboardRouter from "./routes/dashboard.route.js"
 import playlistRouter from "./routes/playlist.route.js"
 import videoRouter from "./routes/video.route.js"
 
-
+app.get("/", (req, res) => {
+  res.send({
+    message: "🚀 Blog Auth API is running! All endpoints are live.",
+    endpoints: {
+      users: "/api/v1/users",
+      tweets: "/api/v1/tweets",
+      comments: "/api/v1/comments",
+      likes: "/api/v1/likes",
+      subscriptions: "/api/v1/subscriptions",
+      dashboards: "/api/v1/dashboards",
+      playlists: "/api/v1/playlists",
+      videos: "/api/v1/videos"
+    }
+  });
+});
 
 app.use("/api/v1/users",userRouter)
 app.use("/api/v1/tweets",tweetRouter)
