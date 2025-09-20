@@ -3,6 +3,7 @@ import {Playlist} from "../models/playlist.model.js"
 import { asyncHandler } from "../utils/asyncHandler.js";
 import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
+import { use } from "react";
 
 const createPlaylist = asyncHandler(async(req,res)=>{
        const {name,description} = req.body
@@ -67,6 +68,9 @@ const getUserPlaylists = asyncHandler(async(req,res)=>{
         }
 
       const userPlaylists = await Playlist.find({owner:userId})
+      if(!userPlaylists){
+        throw new ApiError(404,"User not found")
+      }
 
       if(userPlaylists.length === 0){
         throw new ApiError(404,"No user Playlists are found")
@@ -84,6 +88,9 @@ const deletePlaylist = asyncHandler(async(req,res)=>{
     }
 
      const playlist = await Playlist.findById(playlistId)
+     if(!playlist){
+        throw new ApiError(404,"Playlist not found")
+     }
 
     if(!playlist.owner.equals(req.user._id)){
            throw new ApiError(403,"You are not the playlist owner to delete the playlist")
