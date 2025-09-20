@@ -47,7 +47,7 @@ const toggleCommentLike = asyncHandler(async(req,res)=>{
      const likedData = await Like.create({comment:commentId,likedBy:req.user._id})
 
      if(!likedData){
-        throw new ApiError(400,"Something went wrong ")
+        throw new ApiError(400,"something went wrong while liking")
      }
              return res.status(200)
              .json(new ApiResponse(200,likedData,"Liked successfully"))
@@ -71,7 +71,7 @@ const toggleTweetLike = asyncHandler(async(req,res)=>{
 
    const likedData =await Like.create({tweet:tweetId,likedBy:req.user._id})
    if(!likedData){
-    throw new ApiError(400,"something went wrong")
+    throw new ApiError(400,"something went wrong while liking")
    }
    return res.status(200)
              .json(new ApiResponse(200,"Liked successfully"))
