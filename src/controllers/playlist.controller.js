@@ -30,6 +30,10 @@ const addVideoToPlaylist = asyncHandler(async(req,res)=>{
     const {playlistId,videoId} = req.params
 
     const playlist = await Playlist.findById(playlistId)
+    if(!playlist){
+        throw new ApiError(404,"Playlist not found")
+    }
+    
 
     if(!playlist.owner.equals(req.user._id)){
            throw new ApiError(403,"You are not the playlist owner to add the song")
@@ -106,6 +110,9 @@ const removeVideoFromPlaylist = asyncHandler(async(req,res)=>{
     }
 
      const playlist = await Playlist.findById(playlistId)
+      if(!playlist){
+        throw new ApiError(404,"Playlist not found")
+      }
 
     if(!playlist.owner.equals(req.user._id)){
            throw new ApiError(403,"You are not the playlist owner to remove the song")
