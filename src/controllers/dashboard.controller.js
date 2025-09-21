@@ -7,11 +7,11 @@ import { Tweet } from "../models/tweet.model.js"
 import mongoose, { Mongoose } from "mongoose"
 
 const getChannelStats = asyncHandler(async(req ,res)=>{
-   const{userId} = req.user._id
+   const userId = req.user._id
 
-    // if(!userId){
-    //     throw new ApiError(400,"UserId not found")
-    // }
+    if(!userId){
+        throw new ApiError(400,"UserId not found")
+    }
 
   
    const totalVideos =  await Video.countDocuments({owner:userId})
@@ -49,7 +49,7 @@ const getChannelVideos = asyncHandler(async(req,res)=>{
             from:"users",
             localField:"owner",
             foreignField:"_id",
-            as:"uploadedVideos"
+            as:"user"
         }
      },{
         $unwind:"$uploadedVideos"

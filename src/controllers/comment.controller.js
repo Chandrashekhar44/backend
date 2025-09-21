@@ -47,7 +47,7 @@ const updateComment = asyncHandler(async(req,res)=>{
     )
 
     if(!updatedComment){
-        throw new ApiError(400,"Something went wrong while Updating the comment")
+        throw new ApiError(400,"Comment not found or you are not authorized to update the comment")
     }
     
      return res.status (200)
@@ -64,7 +64,7 @@ const deleteComment = asyncHandler(async(req,res)=>{
 
    const deletedComment = await Comment.findOneAndDelete({_id :commentId,owner:req.user._id},)
    if(!deletedComment){
-    throw new ApiError(404,"Allready deletd or comment not found")
+    throw new ApiError(404,"Comment not found or you are not authorized to delete the comment")
    }
 
     return res.status (200)
