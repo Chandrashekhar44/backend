@@ -55,17 +55,23 @@ backend/
 ### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/Chandrashekhar44/backend.git
-cd backend
+cd backend 
+```
 
 2️⃣ Install dependencies
+```bash
  npm install
+```
 
-```markdown
+
+markdown
+
 3️⃣ Configure environment variables
 Create a `.env` file in the root directory:
 
-.env
 
+.env
+```bash
 PORT=8000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
@@ -73,6 +79,7 @@ CORS_ORIGIN=http://localhost:8000
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
+```
 
 4️⃣ Test the API
 
