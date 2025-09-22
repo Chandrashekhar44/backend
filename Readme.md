@@ -52,7 +52,7 @@ backend/
 ## 🚀 Getting Started
 
 
-### 1️⃣ Clone the repository
+1️⃣ Clone the repository
 ```bash
 git clone https://github.com/Chandrashekhar44/backend.git
 cd backend 
@@ -63,8 +63,6 @@ cd backend
  npm install
 ```
 
-
-markdown
 
 3️⃣ Configure environment variables
 Create a `.env` file in the root directory:
@@ -81,80 +79,97 @@ CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 ```
 
-4️⃣ Test the API
+## 🛠️ Test the API
 
-Use Postman or any API client to start by registering a user and logging in to get a JWT token.
+Test all endpoints using this Postman collection:  
+[Open in Postman](https://banothuchandu77-1301270.postman.co/workspace/BlackBox~498f53dc-2dc6-4ffe-8daa-3d3a80c7e0f8/collection/48031684-fcf1d478-9277-4663-952a-cc9af9e96bda?action=share&source=copy-link&creator=48031684)
+
+Start by registering a user and logging in to get a JWT token.
 
 All endpoints are JWT-protected; start with /api/v1/users/register and /api/v1/users/login.
 
 
+
 📡 API Routes
 
-##Users
+👤 Users
 
-Method	Route	Description
-POST	/api/v1/users/register	Register a new user (supports avatar & cover images)
-POST	/api/v1/users/login	Login and receive JWT token
-POST	/api/v1/users/refresh-token	Refresh JWT token
-POST	/api/v1/users/change-password	Change password
-POST	/api/v1/users/logout	Logout user
-GET	/api/v1/users/current-user	Get current user info
-PATCH	/api/v1/users/update-account	Update account info
-PATCH	/api/v1/users/avatar	Update avatar
-PATCH	/api/v1/users/cover-image	Update cover image
-GET	/api/v1/users/c/:username	Get channel profile by username
-GET	/api/v1/users/history	Get watch history
+| Method    | Route                           | Description                                          |
+| --------- | ------------------------------- | ---------------------------------------------------- |
+| **POST**  | `/api/v1/users/register`        | Register a new user (supports avatar & cover images) |
+| **POST**  | `/api/v1/users/login`           | Login and receive JWT token                          |
+| **POST**  | `/api/v1/users/refresh-token`   | Refresh JWT token                                    |
+| **POST**  | `/api/v1/users/change-password` | Change password                                      |
+| **POST**  | `/api/v1/users/logout`          | Logout user                                          |
+| **GET**   | `/api/v1/users/current-user`    | Get current user info                                |
+| **PATCH** | `/api/v1/users/update-account`  | Update account info                                  |
+| **PATCH** | `/api/v1/users/avatar`          | Update avatar                                        |
+| **PATCH** | `/api/v1/users/cover-image`     | Update cover image                                   |
+| **GET**   | `/api/v1/users/c/:username`     | Get channel profile by username                      |
+| **GET**   | `/api/v1/users/history`         | Get watch history                                    |
 
-##Tweets
 
-Method	Route	Description
-POST	/api/v1/tweets	Add a new tweet
-GET	/api/v1/tweets/user/:userId	Get all tweets by a user
-PATCH	/api/v1/tweets/:tweetId	Update tweet
-DELETE	/api/v1/tweets/:tweetId	Delete tweet
+📝 Tweets
 
-##Comments
+| Method     | Route                         | Description              |
+| ---------- | ----------------------------- | ------------------------ |
+| **POST**   | `/api/v1/tweets`              | Add a new tweet          |
+| **GET**    | `/api/v1/tweets/user/:userId` | Get all tweets by a user |
+| **PATCH**  | `/api/v1/tweets/:tweetId`     | Update tweet             |
+| **DELETE** | `/api/v1/tweets/:tweetId`     | Delete tweet             |
 
-Method	Route	Description
-GET/POST	/api/v1/comments/:videoId	Get/Add comment for a video
-PATCH/DELETE	/api/v1/comments/c/:commentId	Update/Delete comment
+💬 Comments
 
-##Likes
+| Method             | Route                           | Description                   |
+| ------------------ | ------------------------------- | ----------------------------- |
+| **GET / POST**     | `/api/v1/comments/:videoId`     | Get / Add comment for a video |
+| **PATCH / DELETE** | `/api/v1/comments/c/:commentId` | Update / Delete comment       |
 
-Method	Route	Description
-POST	/api/v1/likes/toggle/v/:videoId	Toggle like for video
-POST	/api/v1/likes/toggle/c/:commentId	Toggle like for comment
-POST	/api/v1/likes/toggle/t/:tweetId	Toggle like for tweet
-GET	/api/v1/likes/videos	Get liked videos
+❤️ Likes
 
-##Subscriptions
+| Method   | Route                               | Description             |
+| -------- | ----------------------------------- | ----------------------- |
+| **POST** | `/api/v1/likes/toggle/v/:videoId`   | Toggle like for video   |
+| **POST** | `/api/v1/likes/toggle/c/:commentId` | Toggle like for comment |
+| **POST** | `/api/v1/likes/toggle/t/:tweetId`   | Toggle like for tweet   |
+| **GET**  | `/api/v1/likes/videos`              | Get liked videos        |
 
-Method	Route	Description
-POST/GET	/api/v1/subscriptions/c/:channelId	Toggle subscription / Get channel subscribers
-GET	/api/v1/subscriptions/u/:subscriberId	Get subscribed channels
 
-##Dashboard
+🔔 Subscriptions
 
-Method	Route	Description
-GET	/api/v1/dashboards/stats	Get channel stats (aggregation pipelines)
-GET	/api/v1/dashboards/videos	Get user videos
+| Method         | Route                                   | Description                                   |
+| -------------- | --------------------------------------- | --------------------------------------------- |
+| **POST / GET** | `/api/v1/subscriptions/c/:channelId`    | Toggle subscription / Get channel subscribers |
+| **GET**        | `/api/v1/subscriptions/u/:subscriberId` | Get subscribed channels                       |
 
-##Playlists
+📊 Dashboard
 
-Method	Route	Description
-POST	/api/v1/playlists	Create playlist
-GET/PATCH/DELETE	/api/v1/playlists/:playlistId	Get/Update/Delete playlist
-PATCH	/api/v1/playlists/add/:videoId/:playlistId	Add video to playlist
-PATCH	/api/v1/playlists/delete/:videoId/:playlistId	Remove video from playlist
-GET	/api/v1/playlists/user/:userId	Get user playlists
+| Method  | Route                       | Description                               |
+| ------- | --------------------------- | ----------------------------------------- |
+| **GET** | `/api/v1/dashboards/stats`  | Get channel stats (aggregation pipelines) |
+| **GET** | `/api/v1/dashboards/videos` | Get user videos                           |
 
-##Videos
 
-Method	Route	Description
-GET/POST	/api/v1/videos	Get all / Publish video
-GET/PATCH/DELETE	/api/v1/videos/:videoId	Get/Update/Delete video
-PATCH	/api/v1/videos/toggle/publish/:videoId	Toggle publish status
-PATCH	/api/v1/videos/view/increment/:videoId	Increment view count
+🎵 Playlists
+
+| Method                   | Route                                           | Description                    |
+| ------------------------ | ----------------------------------------------- | ------------------------------ |
+| **POST**                 | `/api/v1/playlists`                             | Create playlist                |
+| **GET / PATCH / DELETE** | `/api/v1/playlists/:playlistId`                 | Get / Update / Delete playlist |
+| **PATCH**                | `/api/v1/playlists/add/:videoId/:playlistId`    | Add video to playlist          |
+| **PATCH**                | `/api/v1/playlists/delete/:videoId/:playlistId` | Remove video from playlist     |
+| **GET**                  | `/api/v1/playlists/user/:userId`                | Get user playlists             |
+
+
+🎥 Videos
+
+| Method                   | Route                                    | Description                 |
+| ------------------------ | ---------------------------------------- | --------------------------- |
+| **GET / POST**           | `/api/v1/videos`                         | Get all / Publish video     |
+| **GET / PATCH / DELETE** | `/api/v1/videos/:videoId`                | Get / Update / Delete video |
+| **PATCH**                | `/api/v1/videos/toggle/publish/:videoId` | Toggle publish status       |
+| **PATCH**                | `/api/v1/videos/view/increment/:videoId` | Increment view count        |
+
 
 🌐 Deployment
 
@@ -170,8 +185,8 @@ Media storage: Cloudinary
 
 🔄 Forgot Password & Password Reset via Email
 - Will include a **frontend interface** in the future for a complete user experience.  
-2. 🌐 Improve user experience with **frontend integration** for authentication flows.  
-3. 📦 Additional features and optimizations based on user feedback.
+ 🌐 Improve user experience with **frontend integration** for authentication flows.  
+ 📦 Additional features and optimizations based on user feedback.
 
 ⚠️ Disclaimer
 
@@ -186,3 +201,12 @@ Chandrashekhar
 GitHub: https://github.com/Chandrashekhar44
 LinkedIn: https://www.linkedin.com/in/chandra-shekhar-89152131b
 LiveAPI: [https://blog-auth-api.onrender.com](https://blog-auth-api.onrender.com)
+
+## 📜 License
+
+This project is licensed under the **MIT License**.  
+
+- You can use, copy, or modify this project freely, as long as you give credit to the author.  
+- The author is **not responsible** if anything goes wrong while using this code.  
+
+See the [LICENSE](./LICENSE) file for full details.
